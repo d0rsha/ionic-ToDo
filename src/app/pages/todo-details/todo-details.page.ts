@@ -50,7 +50,7 @@ export class TodoDetailsPage implements OnInit {
     await loading.present();
 
     if (this.todoId) {
-      this.todoService.updateTodo(this.todoService, this.todoId).then(() => {
+      this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         loading.dismiss();
         this.nav.navigateBack('home');
       });
