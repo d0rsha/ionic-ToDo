@@ -20,4 +20,8 @@ export class HomePage implements OnInit {
     this.todoService.removeTodo(item.id);
   }
 
+  copy(item) {
+    this.todoService.addTodo(item);
+  }
+
 }
