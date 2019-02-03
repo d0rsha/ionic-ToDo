@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// DB interface
 export interface Todo {
+  id?: string;
   task: string;
   priority: number;
   createdAt: number;
@@ -14,15 +14,15 @@ export interface Todo {
   providedIn: 'root'
 })
 export class TodoService {
-
   private todosCollection: AngularFirestoreCollection<Todo>;
+
   private todos: Observable<Todo[]>;
 
   constructor(db: AngularFirestore) {
     this.todosCollection = db.collection<Todo>('todos');
 
     this.todos = this.todosCollection.snapshotChanges().pipe(
-      map( actions => {
+      map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
@@ -40,7 +40,7 @@ export class TodoService {
     return this.todosCollection.doc<Todo>(id).valueChanges();
   }
 
-  updateTodo(todo: TodoService, id: string) {
+  updateTodo(todo: Todo, id: string) {
     return this.todosCollection.doc(id).update(todo);
   }
 
