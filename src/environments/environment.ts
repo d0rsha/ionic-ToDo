@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false
+  // Firebase should be setuped here
+  // Removed because of exposed API-token to google account
 };
 
 /*
