@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 // ADD FIREBASE
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFiresttoreModule } from '@angular/fire/firestore'
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
