@@ -36,13 +36,13 @@
       <ion-item-options side="end">
         <!-- Slide to the left        -->
         <ion-item-options side="start">
-          <ion-item-option (swipe)="copy(item)">
+          <ion-item-option (click)="copy(item)">
             Copy <ion-icon name="checkmark" slot="end"></ion-icon>
           </ion-item-option>
         </ion-item-options>
 
         <!-- Slide to the right/'end' -->
-        <ion-item-option (swipe)="remove(item)" color="secondary">
+        <ion-item-option (click)="remove(item)" color="secondary">
           Check <ion-icon name="checkmark" slot="end"></ion-icon>
         </ion-item-option>
       </ion-item-options>
