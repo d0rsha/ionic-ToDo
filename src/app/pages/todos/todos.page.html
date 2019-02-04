@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button  defaultHref="home"></ion-back-button>
+        </ion-buttons>
+    <ion-title>ToDo's'</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <!-- Shadow box if List is empty-->
+    <ng-container *ngIf="!todos || todos.length == 0">
+      <div *ngFor="let n of [0,1,2]" padding>
+        <ion-skeleton-text></ion-skeleton-text>
+        <p>
+          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
+        </p>
+      </div>
+    </ng-container>
+
+
+    <!-- For loop -->
+    <ion-item-sliding *ngFor="let item of todos">
+      <!-- routerLink for each of item -->
+      <ion-item slot="start" lines="inset" button [routerLink]="['/details', item.id]">
+        <ion-label>
+          {{ item.task }}
+          <p>{{ item.createdAt | date:'short' }}</p>
+        </ion-label>
+
+        <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
+      </ion-item>
+
+
+      <!-- Slide options -->
+      <ion-item-options side="end">
+        <!-- Slide to the left        -->
+        <ion-item-options side="start">
+          <ion-item-option (click)="copy(item)">
+            Copy <ion-icon name="checkmark" slot="end"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <!-- Slide to the right/'end' -->
+        <ion-item-option (click)="remove(item)" color="secondary">
+          Check <ion-icon name="checkmark" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <!-- '+' Sign at the bottom-->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/details" routerDirection="forward">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
