@@ -13,6 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore';
+// HTTP calls
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +23,8 @@ import { AngularFirestore, AngularFirestoreModule } from 'angularfire2/firestore
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule],
+    AngularFirestoreModule,
+    HttpClientModule],
   providers: [
     StatusBar,
     SplashScreen,
